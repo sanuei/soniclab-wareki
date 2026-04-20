@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /wareki/
+
+Sitemap: https://www.soniclab.cc/wareki/sitemap.xml

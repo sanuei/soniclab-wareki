@@ -26,15 +26,24 @@ export default {
       return Response.redirect(target.toString(), 301);
     }
 
+    // Rewrite /wareki/* → /* for asset fetching
+    let assetRequest = request;
+    if (path.startsWith('/wareki/')) {
+      const newUrl = new URL(url.toString());
+      newUrl.pathname = path.replace(/^\/wareki/, '');
+      assetRequest = new Request(newUrl, request);
+    }
+
     // Serve static assets
     try {
-      let res = await env.ASSETS.fetch(request as any);
+      let res = await env.ASSETS.fetch(assetRequest as any);
 
-      // SPA fallback: if 404 and not a file extension, serve index.html
+      // SPA fallback: if 404 and not a file, serve index.html
       if (res.status === 404) {
         const isFile = path.match(/\.[a-zA-Z0-9]+$/);
         if (!isFile) {
-          res = await env.ASSETS.fetch(new URL('/index.html', request.url) as any);
+          const indexUrl = new URL('/index.html', url.toString().replace(path, ''));
+          res = await env.ASSETS.fetch(indexUrl as any);
         }
       }
       return res;
