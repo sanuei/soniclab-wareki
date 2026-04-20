@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Language, Era } from './types';
-import { I18N, ERAS, getEraByYear, toWesternYear, toEraYear, ERA_NAMES, ExtendedI18n } from './constants';
+import { I18N, ERAS, ERAS_UI, getErasByYear, getEraByYear, toWesternYear, toEraYear, ERA_NAMES, ExtendedI18n } from './constants';
 
 const langCodeToLang: Record<string, Language> = { jp: 'ja', en: 'en', zh: 'zh' };
 const langToLangCode: Record<Language, string> = { ja: 'jp', en: 'en', zh: 'zh' };
@@ -35,16 +35,18 @@ const App: React.FC = () => {
     }
   }, [lang]);
 
-  // Western to Era conversion
+  // Western to Era conversion — shows all overlapping eras for a year
   const convertWesternToEra = (value: string): string => {
     const year = parseInt(value, 10);
     if (isNaN(year)) return '';
-    const eraInfo = getEraByYear(year);
-    if (!eraInfo) return '';
-    const eraYear = year - eraInfo.startYear + 1;
-    const eraName = ERA_NAMES[lang][eraInfo.id];
-    if (lang === 'en') return `${eraInfo.name} ${eraYear} (${year})`;
-    return `${eraName}${eraYear}年`;
+    const eras = getErasByYear(year);
+    if (!eras.length) return '';
+    const formatEra = (era: typeof eras[0], eraYear: number) => {
+      const eraName = ERA_NAMES[lang][era.id];
+      if (lang === 'en') return `${era.name} ${eraYear} (${year})`;
+      return `${eraName}${eraYear}年`;
+    };
+    return eras.map(e => formatEra(e, year - e.startYear + 1)).join(' / ');
   };
 
   // Era to Western conversion
@@ -193,7 +195,7 @@ const App: React.FC = () => {
 
         {/* Era Quick Reference */}
         <div className="flex flex-wrap justify-center gap-2">
-          {ERAS.map(era => (
+          {ERAS_UI.map(era => (
             <div key={era.id} className="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
               <span className="text-sm font-black text-slate-700 dark:text-slate-300">{ERA_NAMES[lang][era.id]}</span>
               <span className="text-[10px] font-medium text-slate-400">{era.startYear}–{era.endYear}</span>
