@@ -21,7 +21,12 @@ const App: React.FC = () => {
 
   const i18n = useMemo(() => I18N[lang] as ExtendedI18n, [lang]);
 
-  // Get today's date in all eras
+  // Initialize with current year on mount
+  useEffect(() => {
+    const year = new Date().getFullYear().toString();
+    setWesternInput(year);
+    setResult(convertWesternToEra(year));
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     const now = new Date();
     const year = now.getFullYear();
@@ -372,7 +377,9 @@ const App: React.FC = () => {
           </div>
           <div className="pt-8 border-t border-slate-50 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-4 text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">
-              <span>&copy; 2026 wareki</span>
+              <a href="https://soniclab.cc" className="hover:text-primary transition-colors">&copy; 2026 wareki</a>
+              <span className="w-1 h-1 rounded-full bg-slate-200"></span>
+              <a href="https://soniclab.cc" className="hover:text-primary transition-colors">soniclab.cc</a>
               <span className="w-1 h-1 rounded-full bg-slate-200"></span>
               <span>{i18n.footerCredit}</span>
             </div>
