@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wareki | 和暦 ↔ 西暦 変換ツール</title>
+    <meta id="meta-description" name="description" content="明治・大正・昭和・平成・令和と西暦を双方向に変換。和暦と西暦の変換が必要な履历书やOfficial書類にどうぞ。">
+    <meta name="keywords" content="和暦 変換, 西暦 変換, 令和 西暦, 平成 西暦, 昭和 西暦, 明治 西暦, 和暦 変換 ツール">
+    <meta name="author" content="SonicLab">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.soniclab.cc/wareki/jp">
+    <meta property="og:title" content="wareki | 和暦 ↔ 西暦 変換ツール">
+    <meta property="og:description" content="明治・大正・昭和・平成・令和と西暦を双方向に変換。履历书・公式書類作成に便利。">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="zh_CN">
+    <meta property="og:site_name" content="SonicLab">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="wareki | 和暦 ↔ 西暦 変換ツール">
+    <meta name="twitter:description" content="明治・大正・昭和・平成・令和と西暦を双方向に変換。">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.soniclab.cc/wareki/jp">
+
+    <!-- hreflang -->
+    <link rel="alternate" hreflang="ja" href="https://www.soniclab.cc/wareki/jp">
+    <link rel="alternate" hreflang="en" href="https://www.soniclab.cc/wareki/en">
+    <link rel="alternate" hreflang="zh" href="https://www.soniclab.cc/wareki/zh">
+    <link rel="alternate" hreflang="x-default" href="https://www.soniclab.cc/wareki/jp">
+
+    <link rel="icon" href="/wareki/favicon.svg?v=2" type="image/svg+xml">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#2563EB',
+                            dark: '#1D4ED8',
+                        },
+                    },
+                    boxShadow: {
+                        'premium': '0 4px 20px -5px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+            background-color: #f8fafc;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .dark body {
+            background-color: #020617;
+        }
+
+        * { transition: background-color 0.2s ease, border-color 0.2s ease; }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .custom-scrollbar {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(148, 163, 184, 0.3) transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: rgba(148, 163, 184, 0.3);
+            border-radius: 3px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(148, 163, 184, 0.5);
+        }
+
+        .dark .custom-scrollbar { scrollbar-color: rgba(100, 116, 139, 0.3) transparent; }
+
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb { background-color: rgba(100, 116, 139, 0.3); }
+
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover { background-color: rgba(100, 116, 139, 0.5); }
+    </style>
+
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/wareki/assets/index-DI5afR1i.js"></script>
+</head>
+<body class="text-slate-900 dark:text-slate-100 min-h-screen">
+    <div id="root"></div>
+</body>
+</html>
